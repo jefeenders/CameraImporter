@@ -14,8 +14,14 @@ cd Desktop/raw/2021-05-22/
 # Bash can also accept patterns, like this to `cat`
 # all the Markdown files in current directory
 ls
+old_birth=" "
 for Output in *.RAF
 do
     #stat -f "%m%t%SB %N" $Output | cut -f2-
-    stat -f "%m%t%SB" $Output
+    #https://stackoverflow.com/questions/34123076/osx-how-to-get-the-creation-modification-time-of-a-file-from-the-command-lin
+    birth=$(stat -f "%SB" "$Output")
+    birthstring=($birth)
+    new_birth="${birthstring[0]}-${birthstring[1]}-${birthstring[3]}"
+    if [[ "$A" == "$B" ]]
+    echo $birth
 done
