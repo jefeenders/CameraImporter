@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
 echo $BASH_VERSION
 
-#NAME="John"
-#echo "Hello $NAME!"
 cd
 cd /Users/jan-emmofeenders/Desktop/testmove
 
-# The `-p` flag causes new intermediate directories to be created as necessary.
-#mkdir -p myNewDir/with/intermediate/directories
-# if the intermediate directories didn't already exist, running the above
-# command without the `-p` flag would return an error
-#mv s0urc3.txt dst.txts
-
-# Bash can also accept patterns, like this to `cat`
-# all the Markdown files in current directory
-ls
 old_birth=" "
 current_dir=" "
 declare -A month_dict
@@ -30,7 +19,7 @@ month_dict[September]="09"
 month_dict[October]="10"
 month_dict[November]="11"
 month_dict[December]="12"
-
+count=0
 for Output in *.RAF
 do
     #stat -f "%m%t%SB %N" $Output | cut -f2-
@@ -44,4 +33,7 @@ do
         current_dir="/Users/jan-emmofeenders/Pictures/raw_image/$new_birth"
         mkdir "$current_dir"
     fi
+    count=$((count + 1))
+    mv -v -f $Output $current_dir
 done
+echo "Moved $count *.RAF files"
