@@ -2,7 +2,7 @@
 echo $BASH_VERSION
 
 cd
-cd /Users/jan-emmofeenders/Desktop/testmove
+cd /Volumes/HANNAH_SD/DCIM/100_FUJI
 
 old_birth=" "
 current_dir=" "
@@ -27,13 +27,14 @@ do
     birth=$(stat -f "%SB" "$Output")
     birthstring=($birth)
     new_birth="${birthstring[3]}-${month_dict[${birthstring[0]}]}-${birthstring[1]}"
+    echo "$birth"
     if [[ "$old_birth" != "$new_birth" ]]; then
         old_birth=$new_birth        
         echo "$new_birth"
         current_dir="/Users/jan-emmofeenders/Pictures/raw_image/$new_birth"
-        mkdir "$current_dir"
+        #mkdir "$current_dir"
     fi
     count=$((count + 1))
-    mv -v -f $Output $current_dir
+    #mv -v -f $Output $current_dir
 done
 echo "Moved $count *.RAF files"
